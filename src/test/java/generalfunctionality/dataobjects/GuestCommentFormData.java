@@ -4,35 +4,24 @@ import generalfunctionality.springelements.components.Randoms;
 import io.cucumber.spring.ScenarioScope;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Component
 @ScenarioScope
 public class GuestCommentFormData {
-    private final String commentContent;
-    private final String commentAuthor;
-    private final String commentAuthorEmail;
-    private final String commentAuthorUrl;
+    private final Map<String, String> guestCommentDataMap;
 
     public GuestCommentFormData() {
         Randoms randoms = new Randoms();
-        commentContent = randoms.generateStringInLowerCase();
-        commentAuthor = randoms.generateStringInLowerCase();
-        commentAuthorEmail = randoms.generateRandomEmailAddress();
-        commentAuthorUrl = randoms.generateStringInLowerCase();
+        guestCommentDataMap = new HashMap<String, String>();
+        guestCommentDataMap.put("comment_content", randoms.generateStringInLowerCase());
+        guestCommentDataMap.put("comment_author", randoms.generateStringInLowerCase());
+        guestCommentDataMap.put("comment_author_email", randoms.generateRandomEmailAddress());
+        guestCommentDataMap.put("comment_author_url", randoms.generateRandomWebSiteAddress());
     }
 
-    public String getCommentContent() {
-        return commentContent;
-    }
-
-    public String getCommentAuthor() {
-        return commentAuthor;
-    }
-
-    public String getCommentAuthorEmail() {
-        return commentAuthorEmail;
-    }
-
-    public String getCommentAuthorUrl() {
-        return commentAuthorUrl;
+    public Map<String, String> getGuestCommentDataMap() {
+        return guestCommentDataMap;
     }
 }
