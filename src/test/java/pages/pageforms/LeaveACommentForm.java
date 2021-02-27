@@ -5,6 +5,8 @@ import generalfunctionality.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Map;
+
 public abstract class LeaveACommentForm {
 
     @Autowired
@@ -24,14 +26,16 @@ public abstract class LeaveACommentForm {
                     " it has been approved.']");
 
     public void postACommentAsAGuest() {
+        Map<String, String> guestCommentDataMap =
+                guestCommentFormData.getGuestCommentDataMap();
         seleniumWrapper.waitThenFillIn(commentInputField,
-                guestCommentFormData.getCommentContent());
+                guestCommentDataMap.get("comment_content"));
         seleniumWrapper.waitThenFillIn(nameInputField,
-                guestCommentFormData.getCommentAuthor());
+                guestCommentDataMap.get("comment_author"));
         seleniumWrapper.waitThenFillIn(emailInputField,
-                guestCommentFormData.getCommentAuthorEmail());
+                guestCommentDataMap.get("comment_author_email"));
         seleniumWrapper.waitThenFillIn(websiteInputField,
-                guestCommentFormData.getCommentAuthorUrl());
+                guestCommentDataMap.get("comment_author_url"));
         seleniumWrapper.waitThenClick(submitButton);
         seleniumWrapper.waitUntilVisible(textAfterSubmission);
     }
