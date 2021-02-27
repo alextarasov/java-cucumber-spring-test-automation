@@ -20,7 +20,8 @@ public class WordpressDbDataSource {
     public void setUpDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:8083/wordpress");
+        dataSource.setUrl("jdbc:mysql://localhost:8083/wordpress" +
+                "?zeroDateTimeBehavior=convertToNull");
         dataSource.setUsername("wordpress");
         dataSource.setPassword("wordpress");
         setWordPressDbDataSource(dataSource);
