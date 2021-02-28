@@ -1,4 +1,4 @@
-package cucumbergeneralfunctionality.stepdefenitions;
+package cucumbergeneralfunctionality.stepdefinitions;
 
 import generalfunctionality.dataobjects.NewPostObjectData;
 import generalfunctionality.restapi.RestApiEndpointsMethods;
