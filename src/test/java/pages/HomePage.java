@@ -33,9 +33,9 @@ public class HomePage {
 
         for (int i = 0; i < postsObjects.size(); i++) {
             Map<String, String> post = new HashMap<>();
-            post.put("title", blockWithAPosts
+            post.put("post_title", blockWithAPosts
                     .findElements(By.xpath("//article//h2")).get(i).getText());
-            post.put("content", blockWithAPosts
+            post.put("post_content", blockWithAPosts
                     .findElements(By.xpath("//article//p")).get(i).getText());
             listOfPostsData.add(post);
         }
